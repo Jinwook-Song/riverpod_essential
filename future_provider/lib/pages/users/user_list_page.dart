@@ -58,7 +58,7 @@ class UserListPage extends ConsumerWidget {
       //     ),
       // },
       body: userList.when(
-        skipLoadingOnRefresh: false,
+        skipLoadingOnRefresh: true,
         data: (users) {
           return RefreshIndicator(
             onRefresh: () async => ref.invalidate(userListProvider),
