@@ -6,11 +6,11 @@ part of 'basic_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$helloHash() => r'a3a3e5d4ce3a74823a2e9a269f4914dc741a0b56';
+String _$helloHash() => r'5b227dc010715a08549fb294b8495fd4737f1288';
 
 /// See also [hello].
 @ProviderFor(hello)
-final helloProvider = Provider<String>.internal(
+final helloProvider = AutoDisposeProvider<String>.internal(
   hello,
   name: r'helloProvider',
   debugGetCreateSourceHash:
@@ -19,7 +19,7 @@ final helloProvider = Provider<String>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef HelloRef = ProviderRef<String>;
+typedef HelloRef = AutoDisposeProviderRef<String>;
 String _$worldHash() => r'f1b28d3ef45253c65ee5d63c080702fd4201205a';
 
 /// See also [world].

@@ -8,21 +8,21 @@ class BasicPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.listen<int>(
-    //   counterProvider,
-    //   (previous, next) {
-    //     if (next == 3) {
-    //       showDialog(
-    //         context: context,
-    //         builder: (context) {
-    //           return AlertDialog(
-    //             content: Text('counter: $next'),
-    //           );
-    //         },
-    //       );
-    //     }
-    //   },
-    // );
+    ref.listen<int>(
+      counterProvider,
+      (previous, next) {
+        if (next == 3) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text('counter: $next'),
+              );
+            },
+          );
+        }
+      },
+    );
 
     final value = ref.watch(ageProvider);
 
@@ -45,7 +45,7 @@ class BasicPage extends ConsumerWidget {
       ),
       body: Center(
         child: Text(
-          value,
+          value.toString(),
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),

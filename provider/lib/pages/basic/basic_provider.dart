@@ -17,7 +17,7 @@ part 'basic_provider.g.dart';
 //   return 'World';
 // });
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 String hello(HelloRef ref) {
   ref.onDispose(() {
     print('[helloProvider] disposed');
