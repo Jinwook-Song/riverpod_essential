@@ -73,6 +73,8 @@ class _EnumActivityPageState extends ConsumerState<EnumActivityPage> {
         ActivityStatus.loading => const Center(
             child: CircularProgressIndicator(),
           ),
+        // 최초 로딩시 에러가 발생한 경우가 아니라면 이전 로드된 데이터를 보여준다.
+        // 에러는 listen을 통해 dialog로 따로 보여준다.
         ActivityStatus.failure => activityState.activity == Activity.empty()
             ? const Center(
                 child: Text(

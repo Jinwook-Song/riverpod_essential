@@ -33,6 +33,7 @@ class EnumAsyncActivity extends _$EnumAsyncActivity {
     });
     ref.watch(myCounterProvider);
     print('hashCode: $hashCode');
+    // fetch로 업데이트 하기 전에 미리 state를 초기화해준다.
     state = EnumAsyncActivityState.initial();
     // state = EnumAsyncActivityState(
     //   status: ActivityStatus.failure,
