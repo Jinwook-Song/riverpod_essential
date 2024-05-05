@@ -8,6 +8,8 @@ class AutoDisposePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // widget rebuild 될때마다 listenr가 removed 되었다가 added 된다.
+    // 앱 성능을 위해 Consumer 위젯을 통해 rebuild 되는 범위를 조정하는것이 필요
     ref.listen<int>(
       autoDisposeCounterProvider,
       (previous, next) {
