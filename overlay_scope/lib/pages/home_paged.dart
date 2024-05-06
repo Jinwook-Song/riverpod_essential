@@ -73,6 +73,9 @@ class HomePage extends ConsumerWidget {
                     showDialog(
                       context: context,
                       builder: (c) {
+                        /// builder의 c는 material context를 가르킨다
+                        /// 따라서 homepage의 context인 context를 parent로 사용해야
+                        /// 초기값이 100인 provider를 사용할 수 있다.
                         return ProviderScope(
                           parent: ProviderScope.containerOf(context),
                           child: const AlertDialog(

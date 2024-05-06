@@ -12,6 +12,7 @@ class Counter extends _$Counter {
   void increment() => state++;
 }
 
+/// Counter Provider에서 초기값만 다르게 세팅
 class Counter100 extends Counter {
   @override
   int build() {
