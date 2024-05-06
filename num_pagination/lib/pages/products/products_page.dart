@@ -21,6 +21,7 @@ class _ProductsPageState extends ConsumerState<ProductsPage> {
     final productList = ref.watch(getProductsProvider(page));
 
     return SafeArea(
+      top: false,
       child: Scaffold(
         body: productList.when(
           data: (products) {
