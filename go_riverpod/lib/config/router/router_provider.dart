@@ -88,7 +88,8 @@ GoRouter route(RouteRef ref) {
                 },
                 routes: [
                   GoRoute(
-                    // parentNavigatorKey: _rootNavigatorKey,
+                    // 루트 경로 하위 페이지에 어떤 navigator를 사용할지 선택할 수 있다.
+                    parentNavigatorKey: _rootNavigatorKey,
                     path: 'details/:id',
                     name: RouteNames.secondDetails,
                     builder: (context, state) {
