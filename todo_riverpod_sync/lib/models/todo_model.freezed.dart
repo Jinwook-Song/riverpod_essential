@@ -115,7 +115,8 @@ class __$$TodoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TodoImpl implements _Todo {
-  _$TodoImpl({required this.id, required this.desc, this.completed = false});
+  const _$TodoImpl(
+      {required this.id, required this.desc, this.completed = false});
 
   factory _$TodoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TodoImplFromJson(json);
@@ -163,7 +164,7 @@ class _$TodoImpl implements _Todo {
 }
 
 abstract class _Todo implements Todo {
-  factory _Todo(
+  const factory _Todo(
       {required final String id,
       required final String desc,
       final bool completed}) = _$TodoImpl;

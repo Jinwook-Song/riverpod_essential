@@ -8,7 +8,7 @@ Uuid uuid = const Uuid();
 
 @freezed
 class Todo with _$Todo {
-  factory Todo(
+  const factory Todo(
       {required String id,
       required String desc,
       @Default(false) bool completed}) = _Todo;
