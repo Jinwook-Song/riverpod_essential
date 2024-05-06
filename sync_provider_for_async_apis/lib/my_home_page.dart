@@ -42,11 +42,25 @@ class MyHomePage extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(counterProvider.notifier).increment();
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            heroTag: 'increment',
+            onPressed: () {
+              ref.read(counterProvider.notifier).increment();
+            },
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            heroTag: 'clear',
+            onPressed: () {
+              ref.read(counterProvider.notifier).clear();
+            },
+            child: const Icon(Icons.delete),
+          ),
+        ],
       ),
     );
   }
