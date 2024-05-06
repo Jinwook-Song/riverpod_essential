@@ -16,6 +16,7 @@ Dio dio(DioRef ref) {
 
 @riverpod
 FutureOr<List<Product>> getProducts(GetProductsRef ref) async {
+  // 요청을 token으로 취소할 수 있다.
   final cancelToken = CancelToken();
   Timer? timer;
 
@@ -44,8 +45,12 @@ FutureOr<List<Product>> getProducts(GetProductsRef ref) async {
         cancelToken: cancelToken,
       );
 
+  /// keepAlive의 위치 중요. get method 호출 전에 keepAlive를 실행시키면
+  /// 원하는대로 동작하지 않는다.
+  /// 호출이 성공한 이후 keepAlive를 실행
   final keepAliveLink = ref.keepAlive();
 
+  /// ref의 method들은 여러번 호출 될 수 있다.
   ref.onCancel(() {
     print('[getProductsProvider] cancelled, timer started');
     timer = Timer(const Duration(seconds: 10), () {
