@@ -15,6 +15,8 @@ class ShowTodos extends ConsumerStatefulWidget {
 }
 
 class _ShowTodosState extends ConsumerState<ShowTodos> {
+  Widget prevTodosWidge = const SizedBox.shrink();
+
   @override
   void initState() {
     super.initState();
@@ -67,11 +69,34 @@ class _ShowTodosState extends ConsumerState<ShowTodos> {
         return const Center(
           child: CircularProgressIndicator.adaptive(),
         );
+      // when guard
+      // case TodoListStatus.failure when todoListState.todos.isEmpty:
+      case TodoListStatus.failure when prevTodosWidge is SizedBox:
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                todoListState.error,
+                style: const TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: ref.read(todoListProvider.notifier).getTodos,
+                child: const Text(
+                  'Pleae Retry',
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            ],
+          ),
+        );
+
       case TodoListStatus.failure:
       case TodoListStatus.success:
         final filteredTodos = ref.watch(filteredTodosProvider);
 
-        return ListView.separated(
+        prevTodosWidge = ListView.separated(
           itemCount: filteredTodos.length,
           separatorBuilder: (BuildContext context, int index) {
             return const Divider(color: Colors.grey);
@@ -83,6 +108,7 @@ class _ShowTodosState extends ConsumerState<ShowTodos> {
                 child: const TodoItem());
           },
         );
+        return prevTodosWidge;
     }
   }
 }

@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_riverpod_sync/pages/providers/theme/theme_provider.dart';
+import 'package:todo_riverpod_sync/pages/providers/todo_list/todo_list_state.dart';
 
 import '../providers/active_todo_count/active_todo_count_provider.dart';
 import '../providers/todo_list/todo_list_provider.dart';
@@ -34,14 +37,20 @@ class TodoHeader extends ConsumerWidget {
         ),
         Row(
           children: [
-            IconButton(
-              onPressed: ref.read(themeProvider.notifier).toggleTheme,
-              icon: const Icon(Icons.light_mode_outlined),
+            AbsorbPointer(
+              absorbing: todoListState.status == TodoListStatus.loading,
+              child: IconButton(
+                onPressed: ref.read(themeProvider.notifier).toggleTheme,
+                icon: const Icon(Icons.light_mode_outlined),
+              ),
             ),
             const SizedBox(width: 10),
-            IconButton(
-              onPressed: ref.read(todoListProvider.notifier).getTodos,
-              icon: const Icon(Icons.refresh),
+            AbsorbPointer(
+              absorbing: todoListState.status == TodoListStatus.loading,
+              child: IconButton(
+                onPressed: ref.read(todoListProvider.notifier).getTodos,
+                icon: const Icon(Icons.refresh),
+              ),
             ),
           ],
         )
