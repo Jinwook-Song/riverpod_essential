@@ -66,9 +66,7 @@ class _ShowTodosState extends ConsumerState<ShowTodos> {
       case TodoListStatus.initial:
         return const SizedBox.shrink();
       case TodoListStatus.loading:
-        return const Center(
-          child: CircularProgressIndicator.adaptive(),
-        );
+        return prevTodosWidge;
       // when guard
       // case TodoListStatus.failure when todoListState.todos.isEmpty:
       case TodoListStatus.failure when prevTodosWidge is SizedBox:
@@ -84,7 +82,7 @@ class _ShowTodosState extends ConsumerState<ShowTodos> {
               OutlinedButton(
                 onPressed: ref.read(todoListProvider.notifier).getTodos,
                 child: const Text(
-                  'Pleae Retry',
+                  'Please Retry',
                   style: TextStyle(fontSize: 20),
                 ),
               )

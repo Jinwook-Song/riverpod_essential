@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:todo_riverpod_sync/pages/providers/theme/theme_provider.dart';
 import 'package:todo_riverpod_sync/pages/providers/todo_list/todo_list_state.dart';
 
@@ -15,6 +14,12 @@ class TodoHeader extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final activeTodoCount = ref.watch(activeTodoCountProvider);
     final todoListState = ref.watch(todoListProvider);
+
+    if (todoListState.status == TodoListStatus.loading) {
+      context.loaderOverlay.show();
+    } else {
+      context.loaderOverlay.hide();
+    }
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
