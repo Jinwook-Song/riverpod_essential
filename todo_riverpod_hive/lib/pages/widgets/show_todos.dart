@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_riverpod_sync/models/todo_model.dart';
+import 'package:todo_riverpod_sync/pages/providers/todo_filter/todo_filter_provider.dart';
+import 'package:todo_riverpod_sync/pages/providers/todo_item/todo_item_provider.dart';
+import 'package:todo_riverpod_sync/pages/providers/todo_list/todo_list_provider.dart';
+import 'package:todo_riverpod_sync/pages/providers/todo_search/todo_search_provider.dart';
+import 'package:todo_riverpod_sync/pages/widgets/todo_item.dart';
+
+class ShowTodos extends ConsumerStatefulWidget {
+  const ShowTodos({super.key});
+
+  @override
+  ConsumerState<ShowTodos> createState() => _ShowTodosState();
+}
+
+class _ShowTodosState extends ConsumerState<ShowTodos> {
+  Widget prevTodosWidge = const SizedBox.shrink();
+
+  List<Todo> _filterTodos(List<Todo> allTodos) {
+    final filter = ref.watch(todoFilterProvider);
+    final search = ref.watch(todoSearchProvider);
+
+    List<Todo> tempTodos;
+
+    tempTodos = switch (filter) {
+      Filter.active => allTodos.where((todo) => !todo.completed).toList(),
+      Filter.completed => allTodos.where((todo) => todo.completed).toList(),
+      Filter.all => allTodos,
+    };
+
+    if (search.isNotEmpty) {
+      tempTodos = tempTodos
+          .where(
+              (todo) => todo.desc.toLowerCase().contains(search.toLowerCase()))
+          .toList();
+    }
+
+    return tempTodos;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<AsyncValue<List<Todo>>>(todoListProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error, stackTrace) {
+          if (next.isLoading) return null;
+          return showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text(
+                  'Error',
+                  textAlign: TextAlign.center,
+                ),
+                content: Text(
+                  error.toString(),
+                  textAlign: TextAlign.center,
+                ),
+              );
+            },
+          );
+        },
+      );
+    });
+
+    final todoListState = ref.watch(todoListProvider);
+    return todoListState.when(
+      skipError: true,
+      data: (allTodos) {
+        if (allTodos.isEmpty) {
+          prevTodosWidge = const Center(
+            child: Text(
+              'Enter some todo',
+              style: TextStyle(fontSize: 20),
+            ),
+          );
+          return prevTodosWidge;
+        }
+        final filteredTodos = _filterTodos(allTodos);
+        prevTodosWidge = ListView.separated(
+          itemCount: filteredTodos.length,
+          separatorBuilder: (BuildContext context, int index) {
+            return const Divider(color: Colors.grey);
+          },
+          itemBuilder: (BuildContext context, int index) {
+            final todo = filteredTodos[index];
+            return ProviderScope(
+                overrides: [todoItemProvider.overrideWithValue(todo)],
+                child: const TodoItem());
+          },
+        );
+        return prevTodosWidge;
+      },
+      error: (error, _) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                error.toString(),
+                style: const TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: () => ref.invalidate(todoListProvider),
+                child: const Text(
+                  'Please Retry',
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+      loading: () => prevTodosWidge,
+    );
+  }
+}
