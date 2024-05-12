@@ -38,9 +38,9 @@ GoRouter router(RouterRef ref) {
         return authenticating ? null : Routes.signin.path;
       }
 
-      // if (!fbAuthService.currentUser!.emailVerified) {
-      //   return Routes.verifyEmail.path;
-      // }
+      if (!fbAuthService.currentUser!.emailVerified) {
+        return Routes.verifyEmail.path;
+      }
 
       final verifying = state.matchedLocation == Routes.verifyEmail.path;
       final splashing = state.matchedLocation == Routes.splash.path;

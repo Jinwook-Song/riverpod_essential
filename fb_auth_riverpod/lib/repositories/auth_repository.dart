@@ -66,7 +66,7 @@ class AuthRepository {
     }
   }
 
-  Future<void> sendEmailVerification(String email) async {
+  Future<void> sendEmailVerification() async {
     try {
       await currentUser!.sendEmailVerification();
     } catch (e) {
