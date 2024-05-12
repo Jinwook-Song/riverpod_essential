@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "57139749950",
-    "project_id": "fb-auth-riverpod-2023",
-    "storage_bucket": "fb-auth-riverpod-2023.appspot.com"
+    "project_number": "568587829733",
+    "project_id": "auth-with-riverpod",
+    "storage_bucket": "auth-with-riverpod.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57139749950:android:7fe602019619b49a435d6f",
+        "mobilesdk_app_id": "1:568587829733:android:c6ae66b531ae3446432f0c",
         "android_client_info": {
           "package_name": "com.example.fb_auth_riverpod"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB2-rOP0CEzL_Z8aXPtQZrsv7lRSmoaCdA"
+          "current_key": "AIzaSyAyzhH1WqG7NoFfn60bgqgQp6d25RJAPf8"
         }
       ],
       "services": {

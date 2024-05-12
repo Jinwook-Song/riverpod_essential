@@ -25,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -47,28 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyApXysExarJMuWjIayvaLf2JtC0x8s96OE',
-    appId: '1:57139749950:web:6407f28c23972589435d6f',
-    messagingSenderId: '57139749950',
-    projectId: 'fb-auth-riverpod-2023',
-    authDomain: 'fb-auth-riverpod-2023.firebaseapp.com',
-    storageBucket: 'fb-auth-riverpod-2023.appspot.com',
+    apiKey: 'AIzaSyArodDrmoC5nguIMOqNuQZb4ZqV0--Cwyc',
+    appId: '1:568587829733:web:7a187d9f2987a911432f0c',
+    messagingSenderId: '568587829733',
+    projectId: 'auth-with-riverpod',
+    authDomain: 'auth-with-riverpod.firebaseapp.com',
+    storageBucket: 'auth-with-riverpod.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB2-rOP0CEzL_Z8aXPtQZrsv7lRSmoaCdA',
-    appId: '1:57139749950:android:7fe602019619b49a435d6f',
-    messagingSenderId: '57139749950',
-    projectId: 'fb-auth-riverpod-2023',
-    storageBucket: 'fb-auth-riverpod-2023.appspot.com',
+    apiKey: 'AIzaSyAyzhH1WqG7NoFfn60bgqgQp6d25RJAPf8',
+    appId: '1:568587829733:android:c6ae66b531ae3446432f0c',
+    messagingSenderId: '568587829733',
+    projectId: 'auth-with-riverpod',
+    storageBucket: 'auth-with-riverpod.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCCwlZLUq-OIQW46tTrPZL9kfIwj1ok7Tg',
-    appId: '1:57139749950:ios:353f5cfb9351f119435d6f',
-    messagingSenderId: '57139749950',
-    projectId: 'fb-auth-riverpod-2023',
-    storageBucket: 'fb-auth-riverpod-2023.appspot.com',
+    apiKey: 'AIzaSyCaBz73u2H6U-fj6_uyFQRWHoyNMofRTH0',
+    appId: '1:568587829733:ios:cfbde4f97fc1a67d432f0c',
+    messagingSenderId: '568587829733',
+    projectId: 'auth-with-riverpod',
+    storageBucket: 'auth-with-riverpod.appspot.com',
     iosBundleId: 'com.example.fbAuthRiverpod',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCaBz73u2H6U-fj6_uyFQRWHoyNMofRTH0',
+    appId: '1:568587829733:ios:cfbde4f97fc1a67d432f0c',
+    messagingSenderId: '568587829733',
+    projectId: 'auth-with-riverpod',
+    storageBucket: 'auth-with-riverpod.appspot.com',
+    iosBundleId: 'com.example.fbAuthRiverpod',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyArodDrmoC5nguIMOqNuQZb4ZqV0--Cwyc',
+    appId: '1:568587829733:web:fb44e1e766823d67432f0c',
+    messagingSenderId: '568587829733',
+    projectId: 'auth-with-riverpod',
+    authDomain: 'auth-with-riverpod.firebaseapp.com',
+    storageBucket: 'auth-with-riverpod.appspot.com',
+  );
+
 }
