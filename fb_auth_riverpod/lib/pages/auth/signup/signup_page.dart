@@ -1,4 +1,3 @@
-import 'package:fb_auth_riverpod/config/router/route_names.dart';
 import 'package:fb_auth_riverpod/models/custom_error.dart';
 import 'package:fb_auth_riverpod/pages/auth/signup/signup_provider.dart';
 import 'package:fb_auth_riverpod/pages/auth/widgets/auth_input.dart';
