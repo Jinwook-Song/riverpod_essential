@@ -131,7 +131,7 @@ class _SigninPageState extends ConsumerState<SigninPage> {
                       signinState.maybeWhen(
                         loading: () => null,
                         orElse: () =>
-                            () => context.goNamed(Routes.resetPassword.name),
+                            context.goNamed(Routes.resetPassword.name),
                       );
                     },
                     foregroundColor: Colors.red,
