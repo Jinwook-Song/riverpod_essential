@@ -5,8 +5,8 @@ part 'custom_error.freezed.dart';
 @freezed
 class CustomError with _$CustomError {
   const factory CustomError({
-    @Default('') code,
-    @Default('') message,
-    @Default('') plugin,
+    @Default('') String code,
+    @Default('') String message,
+    @Default('') String plugin,
   }) = _CustomError;
 }
