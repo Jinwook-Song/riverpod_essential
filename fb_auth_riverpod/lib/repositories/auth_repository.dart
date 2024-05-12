@@ -29,7 +29,6 @@ class AuthRepository {
   }
 
   Future<void> signin({
-    required String name,
     required String email,
     required String password,
   }) async {

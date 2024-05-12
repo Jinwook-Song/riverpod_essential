@@ -42,9 +42,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     if (form == null || !form.validate()) return;
 
     ref.read(signupProvider.notifier).signup(
-          name: _nameController.text,
-          email: _emailController.text,
-          password: _passwordController.text,
+          name: _nameController.text.trim(),
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
         );
   }
 
@@ -132,8 +132,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                       CustomTextButton(
                         onPressed: signupState.maybeWhen(
                           loading: () => null,
-                          orElse: () =>
-                              () => context.goNamed(Routes.signin.name),
+                          orElse: () => () => context.pop(),
                         ),
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
