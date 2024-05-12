@@ -35,12 +35,12 @@ GoRouter router(RouterRef ref) {
       final authenticating = state.matchedLocation.contains('auth');
 
       if (authenticated == false) {
-        return authenticating ? null : Routes.signin.path;
+        return authenticating ? null : Routes.signup.path;
       }
 
-      if (!fbAuthService.currentUser!.emailVerified) {
-        return Routes.verifyEmail.path;
-      }
+      // if (!fbAuthService.currentUser!.emailVerified) {
+      //   return Routes.verifyEmail.path;
+      // }
 
       final verifying = state.matchedLocation == Routes.verifyEmail.path;
       final splashing = state.matchedLocation == Routes.splash.path;

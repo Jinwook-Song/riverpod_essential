@@ -7,7 +7,7 @@ extension AsyncValueXX on AsyncValue {
       if (hasValue) 'value: $value',
       if (hasError) ...[
         'error: $error',
-      ]
+      ],
     ].join(', ');
 
     return '$runtimeType($content)';
