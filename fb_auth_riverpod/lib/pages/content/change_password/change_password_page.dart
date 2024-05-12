@@ -1,7 +1,7 @@
 import 'package:fb_auth_riverpod/models/custom_error.dart';
-import 'package:fb_auth_riverpod/pages/auth/signup/signup_provider.dart';
 import 'package:fb_auth_riverpod/pages/auth/widgets/auth_input.dart';
-import 'package:fb_auth_riverpod/pages/content/change_password/chage_password_provider.dart';
+import 'package:fb_auth_riverpod/pages/content/change_password/change_password_provider.dart';
+import 'package:fb_auth_riverpod/pages/content/reauthenticate/reauthenticate_page.dart';
 import 'package:fb_auth_riverpod/pages/widgets/buttons.dart';
 import 'package:fb_auth_riverpod/repositories/auth_repository_provider.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +53,35 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
     }
   }
 
+  Future<void> _processRequireRecentLogin() async {
+    final scaffoldMessager = ScaffoldMessenger.of(context);
+    final result = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return const ReauthenticatePage();
+        },
+      ),
+    );
+
+    if (result == 'success') {
+      scaffoldMessager.showSnackBar(
+        const SnackBar(content: Text('Successfully reauthenticated')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(changePasswordProvider, (previous, next) {
       next.whenOrNull(
-        error: (error, _) => errorDialog(context, error as CustomError),
+        error: (e, _) {
+          final error = e as CustomError;
+          if (error.code == 'requires-recent-login') {
+            _processRequireRecentLogin();
+          } else {
+            errorDialog(context, error);
+          }
+        },
         data: (data) {
           _processSuccessCase();
         },

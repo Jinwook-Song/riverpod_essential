@@ -1,7 +1,6 @@
 import 'package:fb_auth_riverpod/config/router/route_names.dart';
 import 'package:fb_auth_riverpod/models/custom_error.dart';
 import 'package:fb_auth_riverpod/pages/auth/reset_password/reset_password_provider.dart';
-import 'package:fb_auth_riverpod/pages/auth/signin/signin_provider.dart';
 import 'package:fb_auth_riverpod/pages/auth/widgets/auth_input.dart';
 import 'package:fb_auth_riverpod/pages/widgets/buttons.dart';
 import 'package:fb_auth_riverpod/utils/error_dialog.dart';

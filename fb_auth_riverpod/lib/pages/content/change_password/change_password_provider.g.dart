@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chage_password_provider.dart';
+part of 'change_password_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

@@ -1,7 +1,7 @@
 import 'package:fb_auth_riverpod/repositories/auth_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'chage_password_provider.g.dart';
+part 'change_password_provider.g.dart';
 
 @riverpod
 class ChangePassword extends _$ChangePassword {
