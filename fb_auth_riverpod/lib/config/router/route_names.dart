@@ -6,18 +6,21 @@ class RouteModel {
 }
 
 class Routes {
+  // [미인증]
   static const RouteModel signin = RouteModel(
     name: 'signin',
-    path: '/signin',
+    path: '/auth-signin',
   );
   static const RouteModel signup = RouteModel(
     name: 'signup',
-    path: '/signup',
+    path: '/auth-signup',
   );
   static const RouteModel resetPassword = RouteModel(
     name: 'resetPassword',
-    path: '/resetPassword',
+    path: '/auth-resetPassword',
   );
+
+  // [인증]
   static const RouteModel verifyEmail = RouteModel(
     name: 'verifyEmail',
     path: '/verifyEmail',

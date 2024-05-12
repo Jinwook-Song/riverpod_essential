@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CustomError {
-  dynamic get code => throw _privateConstructorUsedError;
-  dynamic get message => throw _privateConstructorUsedError;
-  dynamic get plugin => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  String get plugin => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CustomErrorCopyWith<CustomError> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $CustomErrorCopyWith<$Res> {
           CustomError value, $Res Function(CustomError) then) =
       _$CustomErrorCopyWithImpl<$Res, CustomError>;
   @useResult
-  $Res call({dynamic code, dynamic message, dynamic plugin});
+  $Res call({String code, String message, String plugin});
 }
 
 /// @nodoc
@@ -47,23 +47,23 @@ class _$CustomErrorCopyWithImpl<$Res, $Val extends CustomError>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? plugin = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? plugin = null,
   }) {
     return _then(_value.copyWith(
-      code: freezed == code
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      message: freezed == message
+              as String,
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      plugin: freezed == plugin
+              as String,
+      plugin: null == plugin
           ? _value.plugin
           : plugin // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String,
     ) as $Val);
   }
 }
@@ -76,7 +76,7 @@ abstract class _$$CustomErrorImplCopyWith<$Res>
       __$$CustomErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic code, dynamic message, dynamic plugin});
+  $Res call({String code, String message, String plugin});
 }
 
 /// @nodoc
@@ -90,14 +90,23 @@ class __$$CustomErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? plugin = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? plugin = null,
   }) {
     return _then(_$CustomErrorImpl(
-      code: freezed == code ? _value.code! : code,
-      message: freezed == message ? _value.message! : message,
-      plugin: freezed == plugin ? _value.plugin! : plugin,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      plugin: null == plugin
+          ? _value.plugin
+          : plugin // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,13 +119,13 @@ class _$CustomErrorImpl implements _CustomError {
 
   @override
   @JsonKey()
-  final dynamic code;
+  final String code;
   @override
   @JsonKey()
-  final dynamic message;
+  final String message;
   @override
   @JsonKey()
-  final dynamic plugin;
+  final String plugin;
 
   @override
   String toString() {
@@ -128,17 +137,13 @@ class _$CustomErrorImpl implements _CustomError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomErrorImpl &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.plugin, plugin));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.plugin, plugin) || other.plugin == plugin));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(plugin));
+  int get hashCode => Object.hash(runtimeType, code, message, plugin);
 
   @JsonKey(ignore: true)
   @override
@@ -149,16 +154,16 @@ class _$CustomErrorImpl implements _CustomError {
 
 abstract class _CustomError implements CustomError {
   const factory _CustomError(
-      {final dynamic code,
-      final dynamic message,
-      final dynamic plugin}) = _$CustomErrorImpl;
+      {final String code,
+      final String message,
+      final String plugin}) = _$CustomErrorImpl;
 
   @override
-  dynamic get code;
+  String get code;
   @override
-  dynamic get message;
+  String get message;
   @override
-  dynamic get plugin;
+  String get plugin;
   @override
   @JsonKey(ignore: true)
   _$$CustomErrorImplCopyWith<_$CustomErrorImpl> get copyWith =>
